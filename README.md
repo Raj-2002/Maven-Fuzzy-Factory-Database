@@ -422,8 +422,48 @@ GROUP BY pageview_url;
 
 ### Results
 
+| website_pageview_id | 
+|---------------------|
+| 23504               |
+
+
+| sessions | pageview_id | pageview_url | order_id |
+|----------|-------------|--------------|----------|
+| 11683    | 23504       | /lander-1    | NULL     |
+| 11684    | 23505       | /home        | NULL     |
+| 11685    | 23506       | /lander-1    | NULL     |
+| 11686    | 23507       | /lander-1    | NULL     |
+| 11687    | 23509       | /home        | NULL     |
+| 11688    | 23510       | /home        | NULL     |
+| 11689    | 23511       | /lander-1    | NULL     |
+| 11690    | 23514       | /home        | NULL     |
+| 11691    | 23515       | /lander-1    | NULL     |
+| 11692    | 23517       | /lander-1    | NULL     |
+| 11693    | 23518       | /lander-1    | NULL     |
+| 11694    | 23521       | /lander-1    | NULL     |
+| 11696    | 23526       | /home        | NULL     |
+| 11697    | 23527       | /lander-1    | NULL     |
+| 11698    | 23528       | /lander-1    | NULL     |
+| 11699    | 23529       | /lander-1    | NULL     |
+| 11700    | 23531       | /home        | NULL     |
+| 11701    | 23532       | /lander-1    | NULL     |
+| 11702    | 23534       | /lander-1    | NULL     |
+| 11704    | 23536       | /lander-1    | NULL     |
+| 11705    | 23537       | /home        | NULL     |
+| 11706    | 23538       | /home        | NULL     |
+| 11707    | 23539       | /lander-1    | NULL     |
+| 11708    | 23540       | /lander-1    | NULL     |
+
+
+| lander_page | sessions | orders | CVR   |
+|-------------|----------|--------|-------|
+| /lander-1   | 2316     | 94     | 4.06  |
+| /home       | 2261     | 72     | 3.18  |
+
+
+
 -------------------------------------------------------------------------------------------------
-## Taske - 10 - Landing Page Trend Analysis, August 31, 2012 */
+## Task - 10 - Landing Page Trend Analysis, August 31, 2012 */
 
 ### Email
 >Hi there,
