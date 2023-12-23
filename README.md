@@ -240,34 +240,37 @@ ORDER BY sessions DESC  ;
 
 
 
-## Task - 7 - 
- 
+## Task - 7 - Top Entry Pages
+
 ### Email
 
-
+>Hi there!
+>Would you be able to pull a list of the top entry pages? I want to confirm where our users are hitting the site.
+>If you could pull all entry pages and rank them on entry volume, that would be great.
+>Thanks!
+>- Morgan
 
 ### MySQL Query
 
 ```
+CREATE TEMPORARY TABLE tp1
+SELECT
+    website_session_id, MIN(website_pageview_id) AS min_pageview_id
+FROM website_pageviews
+WHERE created_at < '2012-06-12'
+GROUP BY
+    website_session_id;
 
+SELECT 
+    ws.pageview_url, 
+    COUNT(tp1.min_pageview_id) AS total_visits 
+FROM website_pageviews ws 
+LEFT JOIN tp1 ON tp1.min_pageview_id = ws.website_pageview_id 
+GROUP BY ws.pageview_url 
+ORDER BY total_visits DESC;
 ```
 
-### Final Result
-
-## Task - 8 - 
- 
-### Email
-
-
-
-### MySQL Query
-
-```
-
-```
-
-### Final Result
-
+### Final Results
 
 ## Task - 9 - 
  
