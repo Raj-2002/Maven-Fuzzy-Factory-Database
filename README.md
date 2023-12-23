@@ -305,14 +305,17 @@ GROUP BY
 website_session_id
 )
 
-SELECT COUNT(website_session_id) AS sessions , 
-COUNT(CASE WHEN sess = 1 THEN website_session_id ELSE NULL END) AS bounced_sessions
+SELECT 
+COUNT(website_session_id) AS sessions , 
+COUNT(CASE WHEN sess = 1 THEN website_session_id ELSE NULL END) AS bounced_sessions,
+COUNT(CASE WHEN sess = 1 THEN website_session_id ELSE NULL END)/COUNT(website_session_id)
+AS bounce_rate
 FROM CTE;
 ```
 
-| sessions | bounced_sessions | 
-|----------|------------------|
-| 11048    | 6538             |
+| sessions | bounced_sessions | bounce_rate |
+|----------|------------------|-------------|
+| 11048    | 6538             |0.5918
 
 
 
