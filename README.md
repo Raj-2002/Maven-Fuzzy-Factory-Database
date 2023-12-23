@@ -134,11 +134,12 @@ GROUP BY YEARWEEK(created_at)   ;
 >I was trying to use our site on my mobile device the other day, and the experience was not great. Could you pull conversion rates from session to order, by 
 >device type? If desktop performance is better than on mobile we may be able to bid up for desktop specifically to get more volume?
 >Thanks, Tom
+
 ### MySQL Query
 
 ```
 SELECT 
-	ws.device_type,
+    ws.device_type,
     COUNT(ws.website_session_id) AS sessions,
     COUNT(o.order_id) AS orders,
     COUNT(o.order_id)/COUNT(ws.website_session_id) AS CVR
@@ -146,7 +147,7 @@ SELECT
  LEFT JOIN orders o
  ON o.website_session_id = ws.website_session_id
  WHERE 
-	ws.utm_campaign = 'nonbrand'
+    ws.utm_campaign = 'nonbrand'
     AND ws.utm_source = 'gsearch'
     AND ws.created_at < '2012-05-11'
  GROUP BY
@@ -159,5 +160,48 @@ SELECT
 |-------------|----------|--------|--------|
 | mobile      | 2492     | 24     | 0.0096 |
 | desktop     | 3911     | 146    | 0.0373 |
+
+
+## Task - 5 - Gsearch device-level trends - June 9, 2012
+ 
+### Email
+
+>Hi there,
+>After your device-level analysis of conversion rates, we realized desktop was doing well, so we bid our search 
+>nonbrand desktop campaigns up on 2012-05-19. Could you pull weekly trends for both desktop and mobile 
+>so we can see the impact on volume? You can use 2012-04-15 until the bid change as a baseline.
+>Thanks, Tom
+
+### MySQL Query
+
+```
+ SELECT 
+	DATE(DATE_SUB(created_at , INTERVAL (DAYOFWEEK(created_at) -2) DAY)) AS start_of_week,
+    COUNT(CASE WHEN ws.device_type = 'mobile' THEN ws.website_session_id ELSE NULL END) AS mobile_sessions,
+	COUNT(CASE WHEN ws.device_type = 'desktop' THEN ws.website_session_id ELSE NULL END) AS desktop_sessions
+FROM website_sessions ws
+WHERE
+	ws.utm_campaign = 'nonbrand'
+    AND ws.utm_source = 'gsearch'
+    AND ws.created_at < '2012-06-09'  
+    AND ws.created_at > '2012-04-15'
+GROUP BY start_of_week;
+```
+
+### Final Result
+
+| start_of_week | mobile_sessions | desktop_sessions |
+|---------------|------------------|------------------|
+| 16-04-2012    | 238              | 383              |
+| 23-04-2012    | 234              | 360              |
+| 30-04-2012    | 256              | 425              |
+| 07-05-2012    | 282              | 430              |
+| 14-05-2012    | 214              | 403              |
+| 21-05-2012    | 190              | 661              |
+| 28-05-2012    | 183              | 585              |
+| 04-06-2012    | 157              | 582              |
+
+
+
 
 
