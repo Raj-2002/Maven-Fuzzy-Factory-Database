@@ -338,3 +338,200 @@ FROM CTE;
 |----------|------------------|
 | 11048    | 6538             |
 
+
+
+## Task - 9 Help Analyzing LP Test July 28, 2012*
+
+### Email
+
+>Hi there! 
+>Based on your bounce rate analysis, we ran a new custom landing page (/lander-1)  in a 50/50 test against the 
+>homepage (/home)for our gsearch nonbrand traffic. Can you pull bounce rates for the two groupsso we can 
+>evaluate the new page? Make sure to just look at the time period where /lander-1 was getting traffic, so that it is a >fair comparison.
+>Thanks, Morgan 
+
+ ```
+SELECT website_pageview_id 
+FROM website_pageviews 
+WHERE pageview_url = '/lander-1' 
+LIMIT 1;
+
+CREATE TEMPORARY TABLE landing_page_ids
+SELECT
+	wp.website_session_id AS sessions,
+    MIN(website_pageview_id) AS pageview_id,
+    wp.pageview_url AS pageview_url, 
+    o.order_id AS order_id
+FROM website_pageviews  wp
+JOIN website_sessions ws
+ON ws.website_session_id = wp.website_session_id
+LEFT JOIN orders o  
+ON o.website_session_id = wp.website_session_id 
+WHERE 
+	website_pageview_id >= 23504 
+    AND wp.created_at < '2012-07-28'
+    AND (pageview_url = '/home' OR pageview_url = '/lander-1')
+    AND ws.utm_source = 'gsearch'
+    AND ws.utm_campaign = 'nonbrand'
+GROUP BY wp.website_session_id,wp.pageview_url, o.order_id;
+
+
+-- DROP TABLE landing_page_ids
+
+SELECT 
+	pageview_url AS lander_page, 
+	COUNT(sessions) AS sessions, 
+    COUNT(order_id) AS orders,
+    CASE 
+    WHEN COUNT(sessions) = 0 THEN 0
+    ELSE ROUND(COUNT(order_id) * 100 / NULLIF(COUNT(sessions), 0), 2)
+  END AS CVR
+FROM landing_page_ids
+GROUP BY pageview_url;
+```
+
+### Results
+
+-------------------------------------------------------------------------------------------------
+## Taske - 10 - Landing Page Trend Analysis, August 31, 2012 */
+
+### Email
+>Hi there,
+>Could you pull the volume of paid search nonbrand traffic landing on /home and /lander-1, trended weekly since June 
+>1st? I want to confirm the traffic is all routed correctly.  Could you also pull our overall paid search bounce rate 
+>trended weekly? I want to make sure the lander change has improved the overall picture.
+>Thanks!
+
+### MySQL Query
+ ```
+ CREATE TEMPORARY TABLE landing_page_ids2
+SELECT
+	wp.website_session_id AS sessions,
+    MIN(website_pageview_id) AS pageview_id,
+    wp.pageview_url AS pageview_url, 
+    o.order_id AS order_id
+FROM website_pageviews  wp
+JOIN website_sessions ws
+ON ws.website_session_id = wp.website_session_id
+LEFT JOIN orders o  
+ON o.website_session_id = wp.website_session_id 
+WHERE 
+	-- website_pageview_id >= 23504 
+    wp.created_at < '2012-08-31'
+    AND wp.created_at > '2012-06-01'
+    -- AND (pageview_url = '/home' OR pageview_url = '/lander-1')
+    AND ws.utm_source = 'gsearch'
+    AND ws.utm_campaign = 'nonbrand'
+GROUP BY wp.website_session_id,wp.pageview_url, o.order_id;
+
+--  DROP TABLE landing_page_ids2 
+ 
+ WITH CTE2 AS
+ (
+ SELECT 
+	lpi2.*, 
+    DATE(DATE_SUB(wp.created_at , INTERVAL (DAYOFWEEK(created_at) -3) DAY)) AS week_start
+ FROM landing_page_ids2 lpi2
+ JOIN website_pageviews wp
+ ON wp.website_pageview_id = lpi2.pageview_id
+ 
+)
+
+SELECT 
+week_start,
+COUNT(CASE WHEN pageview_url = '/home' THEN pageview_id ELSE NULL END) AS home_count,
+COUNT(CASE WHEN pageview_url = '/lander-1' THEN pageview_id ELSE NULL END) AS lander_count
+ FROM CTE2
+ GROUP BY week_start;
+``` 
+ 
+## Task - 11 - Help Analyzing Conversion Funnels, September 05, 2012
+
+### Email
+
+>This analysis is really helpful! Looks like we should focus on the lander, Mr. Fuzzy page, 
+>and the billing page, which have the lowest click rates. I have some ideas for the billing page that I think will make 
+>customers more comfortable entering their credit card info. I’ll test a new page soon and will ask for help analyzing 
+? performance.
+>Thanks! -Morgan
+ 
+ ### MySQL Query
+ ```
+ SELECT DISTINCT pageview_url FROM website_pageviews WHERE created_at < '2012-09-05' ;
+ 
+ CREATE TEMPORARY TABLE cte as
+ (
+ SELECT
+ wp.website_session_id,
+ wp.website_pageview_id,
+ CASE WHEN wp.pageview_url = '/home' THEN 1 ELSE NULL END AS viewed_homepage,
+ CASE WHEN wp.pageview_url = '/lander-1' THEN 1 ELSE NULL END AS viewed_lander_page,
+ CASE WHEN wp.pageview_url = '/products' THEN 1 ELSE NULL END AS viewed_products,
+ CASE WHEN wp.pageview_url = '/the-original-mr-fuzzy' THEN 1 ELSE NULL END AS viewed_mr_fuzzy,
+ CASE WHEN wp.pageview_url = '/cart' THEN 1 ELSE NULL END AS viewed_cart,
+ CASE WHEN wp.pageview_url = '/shipping' THEN 1 ELSE NULL END AS viewed_shipping,
+ CASE WHEN wp.pageview_url = '/billing' THEN 1 ELSE NULL END AS viewed_billing,
+ CASE WHEN wp.pageview_url = '/thank-you-for-your-order' THEN 1 ELSE NULL END AS viewed_thank_you
+ FROM website_pageviews wp
+ JOIN website_sessions ws
+ ON ws.website_session_id = wp.website_session_id
+ WHERE 
+	wp.created_at < '2012-09-05' 
+    AND wp.created_at >= '2012-08-05'
+    AND ws.utm_source = 'Gsearch'
+    AND ws.utm_campaign = 'nonbrand'
+ ORDER BY website_session_id
+ );
+ 
+ SELECT
+		COUNT(DISTINCT cte.website_session_id) AS total_sessions,
+        COUNT(cte.viewed_products) as viewed_products,
+        COUNT(cte.viewed_mr_fuzzy) as viewed_mr_fuzzy,
+        COUNT(cte.viewed_cart) as viewed_cart,
+        COUNT(cte.viewed_shipping) as viewed_shipping,
+        COUNT(cte.viewed_billing) as viewed_billing,
+        COUNT(cte.viewed_thank_you) as viewed_thank_you
+        
+FROM cte;
+
+SELECT
+	COUNT(cte.viewed_products)/COUNT(DISTINCT cte.website_session_id) AS lander_ctr,
+    COUNT(cte.viewed_mr_fuzzy)/COUNT(cte.viewed_products) AS products_ctr,
+    COUNT(cte.viewed_cart)/COUNT(cte.viewed_mr_fuzzy) AS mr_fuzzy_ctr,
+    COUNT(cte.viewed_shipping)/ COUNT(cte.viewed_cart) AS cart_ctr,
+    COUNT(cte.viewed_billing)/COUNT(cte.viewed_shipping) AS shipping_ctr,
+    COUNT(cte.viewed_thank_you)/COUNT(cte.viewed_billing) AS billing_ctr
+FROM cte    ;
+```	
+
+
+## Task - 11 - Conversion Funnel Test Results - November 10, 2012
+
+### Email
+>Hello! 
+>We tested an updated billing page based on your funnel analysis. Can you take a look and see whether /billing-2 is 
+>doing any better than the original /billing page? We’re wondering what % of sessions on those pages end up 
+>placing an order. FYI –we ran this test for all traffic, not just for our search visitors.
+>Thanks! -Morgan
+
+
+ ### MySQL Query
+ ```
+SELECT * from website_pageviews WHERE pageview_url = '/billing-2';   -- 53550
+
+SELECT 
+	pageview_url,
+	COUNT(wp.website_session_id) as Total_Sessions,
+	COUNT(o.order_id) AS Total_Orders,
+	COUNT(o.order_id)/COUNT(wp.website_session_id) AS CVR
+FROM website_pageviews wp 
+LEFT JOIN orders o 
+ON o.website_session_id = wp.website_session_id
+WHERE 
+	wp.website_pageview_id >= '53550'
+    AND wp.created_at < '2012-11-10'
+    AND (wp.pageview_url = '/billing' OR wp.pageview_url = '/billing-2')
+GROUP BY pageview_url;
+```
+
+
