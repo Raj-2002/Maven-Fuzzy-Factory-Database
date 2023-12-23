@@ -13,13 +13,15 @@ performance, and use data to understand the impact of new product launches.
 ## OBJECTIVE
  THE Use SQL to:
  • Access and explore the Maven Fuzzy Factory database
- • Become the data expert for the company, and the go-to person for mission-critical analyses
+ • Become the data expert for the company and the go-to person for mission-critical analyses
  • Analyze and optimize the business’ marketing channels, website, and product portfolio
 
 
- ## Task - 1 -  SITE TRAFFIC BREAKDOWN - April 12, 2012 
+## Traffic Source Analysis and Optimization
 
-### Email
+#### Task - 1 -  SITE TRAFFIC BREAKDOWN - April 12, 2012 
+
+#### Email
 
    > Good morning,
    > We've been live for almost a month now and we’re starting to generate sales. Can you help me understand where the bulk of our website sessions are coming 
@@ -28,7 +30,7 @@ performance, and use data to understand the impact of new product launches.
    > Thanks!
    > -Cindy
 
-### MySQL Query
+#### MySQL Query
 ```
 SELECT 
 	utm_source,
@@ -42,7 +44,7 @@ GROUP BY
     utm_campaign,
     http_referer ;
 ```
-### Final Result
+#### Final Result
 
 | utm_source | utm_campaign | http_referer              | total_sessions |
 |------------|--------------|---------------------------|-----------------|
