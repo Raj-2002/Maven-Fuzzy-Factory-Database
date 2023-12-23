@@ -404,12 +404,12 @@ GROUP BY YEARWEEK(created_at);
 
 ### Email
 
->This analysis is really helpful! Looks like we should focus on the lander, Mr. Fuzzy page, 
->and the billing page, which have the lowest click rates. I have some ideas for the billing page that I think will make 
->customers more comfortable entering their credit card info. I’ll test a new page soon and will ask for help analyzing 
-? performance.
->Thanks! -Morgan
- 
+>Hi there! 
+>I’d like to understand where we lose our gsearch visitors between the new /lander-1 page and placing an order. Can 
+>you build us a full conversion funnel, analyzing how many customers make it to each step?
+>Start with /lander-1 and build the funnel all the way to our thank you page. Please use data since August 5th.
+>Thanks!-Morgan
+
  ### MySQL Query
  ```
  SELECT DISTINCT pageview_url FROM website_pageviews WHERE created_at < '2012-09-05' ;
@@ -458,6 +458,17 @@ SELECT
     COUNT(cte.viewed_thank_you)/COUNT(cte.viewed_billing) AS billing_ctr
 FROM cte    ;
 ```	
+### Results
+
+| total_sessions | viewed_products | viewed_mr_fuzzy | viewed_cart | viewed_shipping | viewed_billing | viewed_thank_you |
+| --------------- | --------------- | --------------- | ----------- | ---------------- | --------------- | ----------------- |
+| 4493            | 2115            | 1567            | 683         | 455              | 361             | 158               |
+
+| lander_ctr | products_ctr | mr_fuzzy_ctr | cart_ctr | shipping_ctr | billing_ctr |
+| ---------- | ------------ | ------------ | -------- | ------------ | ----------- |
+| 0.4707     | 0.7409       | 0.4359       | 0.6662   | 0.7934       | 0.4377      |
+
+
 
 
 ## Task - 12 - Conversion Funnel Test Results - November 10, 2012
@@ -488,5 +499,10 @@ WHERE
     AND (wp.pageview_url = '/billing' OR wp.pageview_url = '/billing-2')
 GROUP BY pageview_url;
 ```
+### Results
+| pageview_url | Total_Sessions | Total_Orders | CVR    |
+| ------------ | --------------- | ------------ | ------ |
+| /billing-2   | 654             | 410          | 0.6269 |
+| /billing     | 657             | 300          | 0.4566 |
 
 
