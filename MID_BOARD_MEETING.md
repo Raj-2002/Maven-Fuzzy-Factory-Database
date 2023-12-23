@@ -27,6 +27,7 @@ ON o.website_session_id = ws.website_session_id
 WHERE ws.created_at < '2012-11-27' AND ws.utm_source = 'gsearch'
 GROUP BY Year, Month;
 ```
+### Results
 
 
 ### REQUEST 2 
@@ -54,6 +55,8 @@ GROUP BY
     YEAR(ws.created_at),
     MONTH(ws.created_at);
 ```
+
+### Results
 
 
 ### REQUEST 3 
@@ -85,9 +88,10 @@ GROUP BY
     YEAR(ws.created_at),
     MONTH(ws.created_at);
 ```
+### Results
 
 
-### Request 4 
+### REQUEST 4 
 
 I’m worried that one of our more pessimistic board members may be concerned about the large % of traffic from 
 Gsearch. Can you pull monthly trends for Gsearch, alongside monthly trends for each of our other channels? 
@@ -112,6 +116,10 @@ WHERE ws.created_at < '2012-11-27'
 GROUP BY Year, Month;
 ~~~
 
+### Results
+
+
+
 ### REQUEST 5 
 
 I’d like to tell the story of our website performance improvements over the course of the first 8 months. 
@@ -132,6 +140,10 @@ ON o.website_session_id = ws.website_session_id
 WHERE ws.created_at < '2012-11-27' 
 GROUP BY Year, Month;
 ~~~
+
+### Results
+
+
 
 ### REQUEST 6 
 
@@ -177,6 +189,9 @@ SELECT
 FROM landing_page_ids
 GROUP BY pageview_url;
 ```
+
+### Results
+
 
 
 ### REQUEST 7 
@@ -259,6 +274,7 @@ FROM
 GROUP BY segment;
 ```
 
+### Results
 
 
 ### REQUEST 8 
@@ -300,3 +316,4 @@ WHERE
     AND created_at BETWEEN '2012-10-27' AND '2012-11-27';
 ```
 
+### Results
