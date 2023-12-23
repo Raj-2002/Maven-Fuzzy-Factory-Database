@@ -349,10 +349,54 @@ FROM CTE;
 
 ### MySQL Query
  ```
+WITH tester as 
+(
+SELECT 
+	DATE(wp.created_at) AS created_at,
+	wp.website_session_id,
+    COUNT(website_pageview_id) AS no_of_pages,
+    MIN(website_pageview_id) AS lander_page,
+    (SELECT pageview_url FROM website_pageviews WHERE website_pageview_id = MIN(wp.website_pageview_id)) AS lander_page_url,
+    CASE WHEN COUNT(website_pageview_id) = 1 THEN 1 ELSE NULL END AS BOUNCED
+FROM website_pageviews wp
+LEFT JOIN website_sessions ws
+ON ws.website_session_id = wp.website_session_id
 
+WHERE 
+	wp.created_at > '2012-06-01' 
+	AND wp.created_at < '2012-08-31'
+    AND ws.utm_campaign = 'nonbrand'
+    AND ws.utm_source = 'gsearch'
+    GROUP BY website_session_id, created_at
+    )
+    
+SELECT MIN(DATE(created_at)) AS start_of_week,
+ 	COUNT(BOUNCED)/COUNT(website_session_id) AS Bounce_rate,
+	COUNT(CASE WHEN lander_page_url = '/home' THEN 1 ELSE NULL END) AS homepage,
+    COUNT(CASE WHEN lander_page_url = '/lander-1' THEN 1 ELSE NULL END) AS lander_1
+from tester
+
+GROUP BY YEARWEEK(created_at);
 ```
 
 ### Results
+
+| start_of_week | Bounce_rate | homepage | lander_1 |
+| ------------- | ----------- | -------- | -------- |
+| 01-06-2012    | 0.6023      | 175      | 0        |
+| 03-06-2012    | 0.5856      | 792      | 0        |
+| 10-06-2012    | 0.6164      | 875      | 0        |
+| 17-06-2012    | 0.5582      | 492      | 350      |
+| 24-06-2012    | 0.5833      | 369      | 386      |
+| 01-07-2012    | 0.5813      | 392      | 388      |
+| 08-07-2012    | 0.5668      | 390      | 411      |
+| 15-07-2012    | 0.5429      | 429      | 421      |
+| 22-07-2012    | 0.5132      | 402      | 394      |
+| 29-07-2012    | 0.4976      | 33       | 995      |
+| 05-08-2012    | 0.5372      | 0        | 1087     |
+| 12-08-2012    | 0.5155      | 0        | 998      |
+| 19-08-2012    | 0.5015      | 0        | 1012     |
+| 26-08-2012    | 0.5396      | 0        | 833      |
 
 
  
