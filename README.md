@@ -56,4 +56,39 @@ GROUP BY
 | NULL       | NULL         | https://www.bsearch.com  | 7               |
 
 
+## Task - 2 - Gsearch CVR - April 14 2012
+
+### Email
+
+	> Hi there,
+	> Sounds like gsearch nonbrand is our major traffic source, but we need to understand if those sessions are driving sales.
+	> Could you please calculate the conversion rate (CVR) from session to order? Based on what we're paying for clicks, 
+	> we’ll need a CVR of at least 4% to make the numbers work. If we're much lower, we’ll need to reduce bids. If we’re 
+	> higher, we can increase bids to drive more volume.
+	> Thanks, Tom
+
+### MySQL Query
+
+```
+SELECT 
+	COUNT(ws.website_session_id) AS sessions,
+    COUNT(o.website_session_id) AS orders,
+	COUNT(o.website_session_id)/COUNT(ws.website_session_id) AS CVR
+FROM website_sessions ws
+LEFT JOIN orders o
+ON o.website_session_id = ws.website_session_id
+WHERE 
+	ws.utm_source = 'gsearch'
+    AND ws.utm_campaign = 'nonbrand'
+    AND ws.created_at < '2012-04-14';
+```
+
+### Final Result
+
+| sessions | orders | CVR    |
+|----------|--------|--------|
+| 3895     | 112    | 0.0288 |
+
+
+
 
