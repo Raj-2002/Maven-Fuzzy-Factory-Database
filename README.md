@@ -308,7 +308,7 @@ ORDER BY total_visits DESC;
 
 >Hi there! 
 >The other day you showed us that all of our traffic is landing on the homepageright now. We should check how that 
->landing page is performing. Can you pull bounce rates for traffic landing on the homepage? I would like to see three >numbers…Sessions, Bounced Sessions, and % of Sessions which Bounced (aka “Bounce Rate”).
+>landing page is performing. Can you pull bounce rates for traffic landing on the homepage? I would like to see three numbers…Sessions, Bounced Sessions, and % of Sessions which Bounced (aka “Bounce Rate”).
 >Thanks! -Morgan 
 
 
@@ -332,39 +332,7 @@ COUNT(CASE WHEN sess = 1 THEN website_session_id ELSE NULL END) AS bounced_sessi
 FROM CTE;
 ```
 
-### Final Result
-
-| website_session_id | sess |
-|--------------------|------|
-| 1                  | 1    |
-| 2                  | 1    |
-| 3                  | 1    |
-| 4                  | 1    |
-| 5                  | 1    |
-| 6                  | 6    |
-| 7                  | 1    |
-| 8                  | 1    |
-| 9                  | 1    |
-| 10                 | 1    |
-| 11                 | 1    |
-| 12                 | 1    |
-| 13                 | 1    |
-| 14                 | 1    |
-| 15                 | 3    |
-| 16                 | 2    |
-| 17                 | 1    |
-| 18                 | 4    |
-| 19                 | 1    |
-| 20                 | 7    |
-| 21                 | 1    |
-| 22                 | 1    |
-| 23                 | 1    |
-| 24                 | 1    |
-| 25                 | 1    |
-
-
-
-| sessions | bounced_sessions |
+| sessions | bounced_sessions | 
 |----------|------------------|
 | 11048    | 6538             |
 
@@ -376,89 +344,15 @@ FROM CTE;
 
 >Hi there! 
 >Based on your bounce rate analysis, we ran a new custom landing page (/lander-1)  in a 50/50 test against the 
->homepage (/home)for our gsearch nonbrand traffic. Can you pull bounce rates for the two groupsso we can 
+>homepage (/home)for our gsearch nonbrand traffic. Can you pull bounce rates for the two groups so we can 
 >evaluate the new page? Make sure to just look at the time period where /lander-1 was getting traffic, so that it is a >fair comparison.
 >Thanks, Morgan 
 
  ```
-SELECT website_pageview_id 
-FROM website_pageviews 
-WHERE pageview_url = '/lander-1' 
-LIMIT 1;
 
-CREATE TEMPORARY TABLE landing_page_ids
-SELECT
-	wp.website_session_id AS sessions,
-    MIN(website_pageview_id) AS pageview_id,
-    wp.pageview_url AS pageview_url, 
-    o.order_id AS order_id
-FROM website_pageviews  wp
-JOIN website_sessions ws
-ON ws.website_session_id = wp.website_session_id
-LEFT JOIN orders o  
-ON o.website_session_id = wp.website_session_id 
-WHERE 
-	website_pageview_id >= 23504 
-    AND wp.created_at < '2012-07-28'
-    AND (pageview_url = '/home' OR pageview_url = '/lander-1')
-    AND ws.utm_source = 'gsearch'
-    AND ws.utm_campaign = 'nonbrand'
-GROUP BY wp.website_session_id,wp.pageview_url, o.order_id;
-
-
--- DROP TABLE landing_page_ids
-
-SELECT 
-	pageview_url AS lander_page, 
-	COUNT(sessions) AS sessions, 
-    COUNT(order_id) AS orders,
-    CASE 
-    WHEN COUNT(sessions) = 0 THEN 0
-    ELSE ROUND(COUNT(order_id) * 100 / NULLIF(COUNT(sessions), 0), 2)
-  END AS CVR
-FROM landing_page_ids
-GROUP BY pageview_url;
 ```
 
 ### Results
-
-| website_pageview_id | 
-|---------------------|
-| 23504               |
-
-
-| sessions | pageview_id | pageview_url | order_id |
-|----------|-------------|--------------|----------|
-| 11683    | 23504       | /lander-1    | NULL     |
-| 11684    | 23505       | /home        | NULL     |
-| 11685    | 23506       | /lander-1    | NULL     |
-| 11686    | 23507       | /lander-1    | NULL     |
-| 11687    | 23509       | /home        | NULL     |
-| 11688    | 23510       | /home        | NULL     |
-| 11689    | 23511       | /lander-1    | NULL     |
-| 11690    | 23514       | /home        | NULL     |
-| 11691    | 23515       | /lander-1    | NULL     |
-| 11692    | 23517       | /lander-1    | NULL     |
-| 11693    | 23518       | /lander-1    | NULL     |
-| 11694    | 23521       | /lander-1    | NULL     |
-| 11696    | 23526       | /home        | NULL     |
-| 11697    | 23527       | /lander-1    | NULL     |
-| 11698    | 23528       | /lander-1    | NULL     |
-| 11699    | 23529       | /lander-1    | NULL     |
-| 11700    | 23531       | /home        | NULL     |
-| 11701    | 23532       | /lander-1    | NULL     |
-| 11702    | 23534       | /lander-1    | NULL     |
-| 11704    | 23536       | /lander-1    | NULL     |
-| 11705    | 23537       | /home        | NULL     |
-| 11706    | 23538       | /home        | NULL     |
-| 11707    | 23539       | /lander-1    | NULL     |
-| 11708    | 23540       | /lander-1    | NULL     |
-
-
-| lander_page | sessions | orders | CVR   |
-|-------------|----------|--------|-------|
-| /lander-1   | 2316     | 94     | 4.06  |
-| /home       | 2261     | 72     | 3.18  |
 
 
 
@@ -474,65 +368,11 @@ GROUP BY pageview_url;
 
 ### MySQL Query
  ```
-CREATE TEMPORARY TABLE landing_page_ids2
-SELECT
-    wp.website_session_id AS sessions,
-    MIN(website_pageview_id) AS pageview_id,
-    wp.pageview_url AS pageview_url, 
-    o.order_id AS order_id
-FROM website_pageviews  wp
-JOIN website_sessions ws
-ON ws.website_session_id = wp.website_session_id
-LEFT JOIN orders o  
-ON o.website_session_id = wp.website_session_id 
-WHERE 
-	-- website_pageview_id >= 23504 
-    wp.created_at < '2012-08-31'
-    AND wp.created_at > '2012-06-01'
-    -- AND (pageview_url = '/home' OR pageview_url = '/lander-1')
-    AND ws.utm_source = 'gsearch'
-    AND ws.utm_campaign = 'nonbrand'
-GROUP BY wp.website_session_id,wp.pageview_url, o.order_id;
 
---  DROP TABLE landing_page_ids2 
- 
- WITH CTE2 AS
- (
- SELECT 
-	lpi2.*, 
-    DATE(DATE_SUB(wp.created_at , INTERVAL (DAYOFWEEK(created_at) -3) DAY)) AS week_start
- FROM landing_page_ids2 lpi2
- JOIN website_pageviews wp
- ON wp.website_pageview_id = lpi2.pageview_id
- 
-)
-
-SELECT 
-week_start,
-COUNT(CASE WHEN pageview_url = '/home' THEN pageview_id ELSE NULL END) AS home_count,
-COUNT(CASE WHEN pageview_url = '/lander-1' THEN pageview_id ELSE NULL END) AS lander_count
- FROM CTE2
- GROUP BY week_start;
 ```
 
 ### Results
 
-| week_start  | home_count | lander_count |
-|-------------|------------|--------------|
-| 29-05-2012  | 175        | 0            |
-| 05-06-2012  | 792        | 0            |
-| 12-06-2012  | 875        | 0            |
-| 19-06-2012  | 492        | 350          |
-| 26-06-2012  | 369        | 386          |
-| 03-07-2012  | 392        | 388          |
-| 10-07-2012  | 390        | 411          |
-| 17-07-2012  | 429        | 421          |
-| 24-07-2012  | 402        | 394          |
-| 31-07-2012  | 33         | 995          |
-| 07-08-2012  | 0          | 1087         |
-| 14-08-2012  | 0          | 998          |
-| 21-08-2012  | 0          | 1012         |
-| 28-08-2012  | 0          | 833          |
 
  
 ## Task - 11 - Help Analyzing Conversion Funnels, September 05, 2012
