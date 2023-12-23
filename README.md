@@ -204,4 +204,82 @@ GROUP BY start_of_week;
 
 
 
+## Task - 6 - Top Website Pages - June 09, 2012
+ 
+### Email
+
+>I’m Morgan, the new Website Manager. Could you help me get my head around the site by pulling 
+>the most-viewed website pages, ranked by session volume?
+>Thanks! 
+>-Morgan
+
+
+### MySQL Query
+
+```
+SELECT 
+	pageview_url,
+    COUNT(DISTINCT website_pageview_id) AS sessions
+FROM website_pageviews wp
+WHERE created_at < '2012-06-09'
+GROUP BY pageview_url
+ORDER BY sessions DESC  ; 
+```
+
+### Final Result
+
+| pageview_url                  | sessions |
+|------------------------------|----------|
+| /home                        | 10403    |
+| /products                    | 4239     |
+| /the-original-mr-fuzzy        | 3037     |
+| /cart                        | 1306     |
+| /shipping                    | 869      |
+| /billing                     | 716      |
+| /thank-you-for-your-order    | 306      |
+
+
+
+## Task - 7 - 
+ 
+### Email
+
+
+
+### MySQL Query
+
+```
+
+```
+
+### Final Result
+
+## Task - 8 - 
+ 
+### Email
+
+
+
+### MySQL Query
+
+```
+
+```
+
+### Final Result
+
+
+## Task - 9 - 
+ 
+### Email
+
+
+
+### MySQL Query
+
+```
+
+```
+
+### Final Result
 
