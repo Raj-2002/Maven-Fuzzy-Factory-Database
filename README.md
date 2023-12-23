@@ -19,7 +19,7 @@ performance, and use data to understand the impact of new product launches.
 
 ## Traffic Source Analysis and Optimization
 
-<ins> ### Task - 1 -  SITE TRAFFIC BREAKDOWN - April 12, 2012 </ins>
+### Task - 1 -  SITE TRAFFIC BREAKDOWN - April 12, 2012
 
 #### Email
 
