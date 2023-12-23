@@ -302,17 +302,39 @@ ORDER BY total_visits DESC;
 
 
 
-## Task - 8 - 
+## Task - 8 - Bounce Rate Analysis - June 14, 2012
  
 ### Email
 
+>Hi there! 
+>The other day you showed us that all of our traffic is landing on the homepageright now. We should check how that 
+>landing page is performing. Can you pull bounce rates for traffic landing on the homepage? I would like to see three >numbers…Sessions, Bounced Sessions, and % of Sessions which Bounced (aka “Bounce Rate”).
+>Thanks! -Morgan 
 
 
 ### MySQL Query
 
 ```
+WITH CTE AS 
+(
+SELECT
+	website_session_id, 
+	count(website_pageview_id) as sess
+FROM website_pageviews
+WHERE created_at < '2012-06-14' 
 
+GROUP BY
+website_session_id
+)
+
+SELECT COUNT(website_session_id) AS sessions , 
+COUNT(CASE WHEN sess = 1 THEN website_session_id ELSE NULL END) AS bounced_sessions
+FROM CTE;
 ```
 
 ### Final Result
+
+| sessions | bounced_sessions |
+|----------|------------------|
+| 11048    | 6538             |
 
