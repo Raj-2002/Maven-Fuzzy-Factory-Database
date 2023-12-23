@@ -474,9 +474,9 @@ GROUP BY pageview_url;
 
 ### MySQL Query
  ```
- CREATE TEMPORARY TABLE landing_page_ids2
+CREATE TEMPORARY TABLE landing_page_ids2
 SELECT
-	wp.website_session_id AS sessions,
+    wp.website_session_id AS sessions,
     MIN(website_pageview_id) AS pageview_id,
     wp.pageview_url AS pageview_url, 
     o.order_id AS order_id
@@ -513,7 +513,27 @@ COUNT(CASE WHEN pageview_url = '/home' THEN pageview_id ELSE NULL END) AS home_c
 COUNT(CASE WHEN pageview_url = '/lander-1' THEN pageview_id ELSE NULL END) AS lander_count
  FROM CTE2
  GROUP BY week_start;
-``` 
+```
+
+### Results
+
+| week_start  | home_count | lander_count |
+|-------------|------------|--------------|
+| 29-05-2012  | 175        | 0            |
+| 05-06-2012  | 792        | 0            |
+| 12-06-2012  | 875        | 0            |
+| 19-06-2012  | 492        | 350          |
+| 26-06-2012  | 369        | 386          |
+| 03-07-2012  | 392        | 388          |
+| 10-07-2012  | 390        | 411          |
+| 17-07-2012  | 429        | 421          |
+| 24-07-2012  | 402        | 394          |
+| 31-07-2012  | 33         | 995          |
+| 07-08-2012  | 0          | 1087         |
+| 14-08-2012  | 0          | 998          |
+| 21-08-2012  | 0          | 1012         |
+| 28-08-2012  | 0          | 833          |
+
  
 ## Task - 11 - Help Analyzing Conversion Funnels, September 05, 2012
 
