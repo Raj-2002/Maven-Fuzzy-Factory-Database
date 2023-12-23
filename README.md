@@ -89,5 +89,40 @@ WHERE
 | 3895     | 112    | 0.0288 |
 
 
+## Task - 3 - Gsearch Volume Trends - May 12, 2012
+
+### Email
+
+>Based on your conversion rate analysis, we bid down gsearch nonbrandon 2012-04-15. Can you pull gsearch nonbrand trended session volume, by 
+>week, to see if the bid changes have caused volume to drop at all?
+>Thanks, Tom
+
+### MySQL Query
+
+```
+SELECT 
+	MIN(DATE(created_at)) AS start_of_week,
+	COUNT(website_session_id) AS Sessions
+FROM website_sessions ws
+WHERE 
+	utm_campaign = 'nonbrand'
+    AND utm_source = 'gsearch'
+    AND created_at < '2012-05-12'
+GROUP BY YEARWEEK(created_at)   ;
+```
+
+### Final Result
+
+| start_of_week | Sessions |
+|---------------|----------|
+| 19-03-2012    | 896      |
+| 25-03-2012    | 956      |
+| 01-04-2012    | 1152     |
+| 08-04-2012    | 983      |
+| 15-04-2012    | 621      |
+| 22-04-2012    | 594      |
+| 29-04-2012    | 681      |
+| 06-05-2012    | 651      |
+
 
 
