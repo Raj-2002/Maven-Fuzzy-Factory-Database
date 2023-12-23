@@ -210,8 +210,8 @@ GROUP BY start_of_week;
 
 >I’m Morgan, the new Website Manager. Could you help me get my head around the site by pulling 
 >the most-viewed website pages, ranked by session volume?
->Thanks! 
->-Morgan
+>Thanks! , Morgan
+
 
 
 ### MySQL Query
@@ -247,8 +247,8 @@ ORDER BY sessions DESC  ;
 >Hi there!
 >Would you be able to pull a list of the top entry pages? I want to confirm where our users are hitting the site.
 >If you could pull all entry pages and rank them on entry volume, that would be great.
->Thanks!
->- Morgan
+>Thanks!,Morgan
+
 
 ### MySQL Query
 
@@ -272,7 +272,37 @@ ORDER BY total_visits DESC;
 
 ### Final Results
 
-## Task - 9 - 
+| website_session_id | min_pageview_id |
+|---------------------|------------------|
+| 1                   | 1                |
+| 2                   | 2                |
+| 3                   | 3                |
+| 4                   | 4                |
+| 5                   | 5                |
+| 6                   | 6                |
+| 7                   | 7                |
+| 8                   | 12               |
+| 9                   | 14               |
+| 10                  | 15               |
+| 11                  | 16               |
+| 12                  | 17               |
+| 13                  | 18               |
+| 14                  | 19               |
+| 15                  | 20               |
+| 16                  | 21               |
+| 17                  | 25               |   
+
+
+
+| pageview_url | total_visits |
+|--------------|--------------|
+| /home        | 10714        |
+
+
+
+
+
+## Task - 8 - 
  
 ### Email
 
