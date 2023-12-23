@@ -126,3 +126,38 @@ GROUP BY YEARWEEK(created_at)   ;
 
 
 
+## Task - 4 - Gsearch device level performance - May 11, 2012
+
+### Email
+
+>Hi there,
+>I was trying to use our site on my mobile device the other day, and the experience was not great. Could you pull conversion rates from session to order, by 
+>device type? If desktop performance is better than on mobile we may be able to bid up for desktop specifically to get more volume?
+>Thanks, Tom
+### MySQL Query
+
+```
+SELECT 
+	ws.device_type,
+    COUNT(ws.website_session_id) AS sessions,
+    COUNT(o.order_id) AS orders,
+    COUNT(o.order_id)/COUNT(ws.website_session_id) AS CVR
+ FROM website_sessions ws
+ LEFT JOIN orders o
+ ON o.website_session_id = ws.website_session_id
+ WHERE 
+	ws.utm_campaign = 'nonbrand'
+    AND ws.utm_source = 'gsearch'
+    AND ws.created_at < '2012-05-11'
+ GROUP BY
+ ws.device_type;
+```
+
+### Final Result
+
+| device_type | sessions | orders | CVR    |
+|-------------|----------|--------|--------|
+| mobile      | 2492     | 24     | 0.0096 |
+| desktop     | 3911     | 146    | 0.0373 |
+
+
