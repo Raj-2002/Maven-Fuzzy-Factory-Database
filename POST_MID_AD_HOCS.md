@@ -164,7 +164,10 @@ GROUP BY
     MONTH(created_at);
 ```
 
-/* Understanding Seasonality -  January 02, 2013 */
+### Final Results
+
+
+## Understanding Seasonality -  January 02, 2013 
 
 ### Email
 
@@ -190,7 +193,9 @@ ON ws.website_session_id = o.website_session_id
 WHERE ws.created_at < '2013-01-01'
 GROUP BY Year, Month;
 ```
-/*  Data for Customer Service  January 05, 2013 */
+### Results
+
+## Data for Customer Service  January 05, 2013 
 ### Email
 
 >Good morning,
@@ -201,7 +206,7 @@ GROUP BY Year, Month;
 >Thanks, Cindy
 
 ### MySQL Query
-
+0
 ```
 WITH daily_hourly_sessions AS (
     SELECT
@@ -226,9 +231,10 @@ SELECT
 FROM daily_hourly_sessions
 GROUP BY hour;
 ```
-/*********** Product Level Analysis *************/
+### Results
 
-/* Subject: Sales Trends January 04, 2013 */
+## Sales Trends January 04, 2013
+
 ### Email
 
 >Good morning,
@@ -253,7 +259,7 @@ GROUP BY
 	MONTH(created_at);
  ```   
     
-/* Impact of New Product Launch  April 05, 2013 */
+## Impact of New Product Launch  April 05, 2013 
 
 ### Email
 
@@ -283,7 +289,9 @@ WHERE ws.created_at < '2013-04-05'
 AND ws.created_at > '2012-04-01' 
 GROUP BY Year, Month ;   
 ```
-/* Help w/ User Pathing -  April 06, 2014 */
+### Results
+
+##  Help w/ User Pathing -  April 06, 2014 
  
 ### Email
 
@@ -335,9 +343,9 @@ SELECT
 FROM next_pageview_id
 GROUP BY time_period;
 ```
+### Results
 
-/***************/
-/*  Product Conversion Funnels  April 10, 2014 */
+##   Product Conversion Funnels  April 10, 2014 */
 
 ### Email
 
@@ -415,8 +423,9 @@ FROM session_product_level_made_it_flags
 GROUP BY product_seen
 ORDER BY product_seen;
 ```
+### Results
 
-/* Quality Issues & Refunds  October 15, 2014
+##  Quality Issues & Refunds  October 15, 2014
 
 ### Email
 
@@ -451,8 +460,7 @@ GROUP BY
 ```
 
 
-/**************************************************************/
-/* Repeat Visitors - November 1, 2014*/
+## Repeat Visitors - November 1, 2014
 
 ### Email
 
@@ -481,8 +489,9 @@ ORDER BY repeatornot asc
 
 SELECT repeatornot, count(user_id) AS tot from order_counts group by repeatornot;
 ```
+### Results
 
-/*  Repeat Channel Mix November 5, 2014 */
+##   Repeat Channel Mix November 5, 2014 
 
 ### Email
 
@@ -510,8 +519,10 @@ WHERE created_at >= '2014-01-01' AND created_at < '2014-11-05'
 GROUP BY channel_group
 ORDER BY repeat_sessions DESC;
 ```
+### Results
 
-/*: Top Website Pages  November 08, 2014 */
+
+## Top Website Pages  November 08, 2014 
  
 ### Email
 
@@ -534,3 +545,4 @@ LEFT JOIN orders ON website_sessions.website_session_id = orders.website_session
 WHERE website_sessions.created_at >= '2014-01-01' AND website_sessions.created_at < '2014-11-08'
 GROUP BY is_repeat_session;
 ```
+### Results
