@@ -93,4 +93,4 @@ The Maven Fuzzy Factory database consists of six tables, each serving a specific
      - `refund_amount_usd` (DECIMAL)
    - Primary Key: `order_item_refund_id`
 
-These tables hold crucial data that will enable you to quantify the company's growth, optimize marketing channels, and measure website performance. In the upcoming sections, you will explore how to extract and analyze this data to create a compelling growth story for Maven Fuzzy Factory's presentation to the board
+These tables hold crucial data that will enable you to quantify the company's growth, optimize marketing channels, and measure website performance. In the upcoming sections, you will explore how to extract and analyze this data to create a compelling growth story for Maven Fuzzy Factory's presentation to the board and investors
