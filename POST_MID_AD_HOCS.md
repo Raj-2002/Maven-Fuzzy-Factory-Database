@@ -90,12 +90,11 @@ ORDER BY device_type ;
 ## Impact of Bid Changes - December 22, 2012 
  
 ### Email
-```
+
 Hi there,
 Based on your last analysis, we bid down bsearch nonbrand on Can you pull weekly session volume for gsearch and bsearch 
 nonbrand, broken down by device, since November 4th? If you can include a comparison metric to show bsearchas a 
 percent of gsearchfor each device, that would be great too.
-```
 
 ### MySQL Query
 
@@ -121,13 +120,14 @@ GROUP BY YEARWEEK(created_at);
 
 /* Site traffic breakdown -  December 23, 2012 */
 
-/*
+### Email
+
 Good morning,
 A potential investor is asking if we’re building any momentum with our brand or if we’ll need to keep relying 
 on paid traffic.  Could you pull organic search, direct type in, and paid brand search sessions by month, and show those sessions 
 as a % of paid search nonbrand?
 -Cindy 
-*/
+
 ### MySQL Query
 
 ```
@@ -166,14 +166,15 @@ GROUP BY
 
 /* Understanding Seasonality -  January 02, 2013 */
 
-/*
+### Email
+
 Good morning,
 2012 was a great year for us. As we continue to grow, we should take a look at 2012’s monthly and weekly volume 
 patterns, to see if we can find any seasonal trends we should plan for in 2013.  If you can pull session volume and order volume, that 
 would be excellent.
 Thanks,
  -Cindy
- */
+ 
 
  ### MySQL Query
 
@@ -190,14 +191,15 @@ WHERE ws.created_at < '2013-01-01'
 GROUP BY Year, Month;
 ```
 /*  Data for Customer Service  January 05, 2013 */
-/*
+### Email
+
 Good morning,
 We’re considering adding live chat support to the website to improve our customer experience. Could you analyze 
 the average website session volume, by hour of day and by day week,so that we can staff appropriately? 
 Let’s avoid the holiday time period and use a date range of Sep 15 -Nov 15, 2013.
  
 Thanks, Cindy
- */
+
 ### MySQL Query
 
 ```
@@ -227,7 +229,8 @@ GROUP BY hour;
 /*********** Product Level Analysis *************/
 
 /* Subject: Sales Trends January 04, 2013 */
- /*
+### Email
+
 Good morning,
 We’re about to launch a new product, and I’d like to do a deep dive on our current flagship product.
 Can you please pull monthly trends to date for number of sales, total revenue, and total margin generatedfor the business?
@@ -251,7 +254,9 @@ GROUP BY
  ```   
     
 /* Impact of New Product Launch  April 05, 2013 */
-/*
+
+### Email
+
 Good morning,
 We launched our second product back on January 6th. Can you pull together some trended analysis? 
 I’d like to see monthly order volume, overall conversion rates, revenue per session, and a breakdown of sales by 
@@ -280,14 +285,15 @@ GROUP BY Year, Month ;
 ```
 /* Help w/ User Pathing -  April 06, 2014 */
  
- /*
+### Email
+
 Hi there! 
 Now that we have a new product, I’m thinking about our user path and conversion funnel. Let’s look at sessions which 
 hit the /products page and see where they went next. Could you please pull clickthrough rates from /products 
 since the new product launch on 2013-01-06, by product, and compare to the 3 months leading up to launch as a baseline? 
 
 Thanks, Morgan
-  */
+
 ### MySQL Query
 
 ```
@@ -332,13 +338,15 @@ GROUP BY time_period;
 
 /***************/
 /*  Product Conversion Funnels  April 10, 2014 */
-/*
+
+### Email
+
 Hi there! 
 I’d like to look at our two products since January 6th and analyze the conversion funnels from each product page to 
 conversion.It would be great if you could produce a comparison between the two conversion funnels, for all website traffic.
 
 Thanks! -Morgan  
- */
+
  ### MySQL Query
 
 ``` 
@@ -409,6 +417,9 @@ ORDER BY product_seen;
 ```
 
 /* Quality Issues & Refunds  October 15, 2014
+
+### Email
+
 Good morning,  
 Our Mr. Fuzzy supplier had some quality issues which weren’t corrected until September 2013. Then they had a 
 major problem where the bears’ arms were falling off in Aug/Sep 2014. As a result, we replaced them with a new 
@@ -442,7 +453,8 @@ GROUP BY
 /**************************************************************/
 /* Repeat Visitors - November 1, 2014*/
 
-/*
+### Email
+
 Hey there,
 We’ve been thinking about customer value based solely on their first session conversion and revenue. Butif customers 
 have repeat sessions, they may be more valuable than we thought. If that’s the case, we might be able to spend a bit 
@@ -471,14 +483,14 @@ SELECT repeatornot, count(user_id) AS tot from order_counts group by repeatornot
 
 /*  Repeat Channel Mix November 5, 2014 */
 
-/*
+### Email
+
 Hi there,
 Let’s do a bit more digging into our repeat customers. Can you help me understand the channels they come back 
 through? Curious if it’s all direct type-in, or if we’re paying for these customers with paid search ads multiple times. 
 Comparing new vs. repeat sessions by channel would be really valuable, if you’re able to pull it! 2014 to date is great. 
 Thanks, Tom
 
-*/
 ### MySQL Query
 
 ```
@@ -500,12 +512,13 @@ ORDER BY repeat_sessions DESC;
 
 /*: Top Website Pages  November 08, 2014 */
  
- /*
- Hi there! 
+### Email
+
+Hi there! 
 Sounds like you and Tom have learned a lot about our repeat customers. Can I trouble you for one more thing? 
 I’d love to do a comparison of conversion rates and revenue per session for repeat sessions vs new sessions. 
 Let’s continue using data from 2014, year to date. Thank you!
- -Morgan*/
+ -Morgan
  
 ### MySQL Query
 
