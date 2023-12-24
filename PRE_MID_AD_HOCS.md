@@ -55,7 +55,7 @@ GROUP BY
 | bsearch    | brand        | https://www.bsearch.com  | 7               |
 | NULL       | NULL         | https://www.bsearch.com  | 7               |
 
-### Result interpretation
+### Result Interpretation
 
 - Gsearch is the primary source of traffic
 
@@ -91,7 +91,7 @@ WHERE
 |----------|--------|--------|
 | 3895     | 112    | 0.0288 |
 
-### Result interpretation
+### Result Interpretation
 
 - Current conversion rate indicates a shortfall below the crucial 4% threshold.
 - To achieve optimal economic viability, a strategic adjustment is required.
@@ -133,8 +133,12 @@ GROUP BY YEARWEEK(created_at)   ;
 | 29-04-2012    | 681      |
 | 06-05-2012    | 651      |
 
-### Result interpretation
+### Result Interpretation
 
+
+- Gsearch nonbrand appears sensitive to bid adjustments.
+- Goal: Attain maximum volume while adhering to budget constraints.
+- Emphasis on optimizing ad spend to align with financial limits.
 
 ## Task - 4 - Gsearch device level performance - May 11, 2012
 
@@ -171,7 +175,9 @@ SELECT
 | mobile      | 2492     | 24     | 0.0096 |
 | desktop     | 3911     | 146    | 0.0373 |
 
-### Result interpretation
+### Result Interpretation
+
+- Desktop sees more sessions and also has a better CVR
 
 ## Task - 5 - Gsearch device-level trends - June 9, 2012
  
@@ -215,6 +221,8 @@ GROUP BY start_of_week;
 
 ### Result interpretation
 
+- Mobile performance has been relatively stagnant or slightly declining.
+- Desktop, however, exhibits strength attributed to bid adjustments following the previous conversion analysis.
 
 ## Task - 6 - Top Website Pages - June 09, 2012
  
@@ -252,6 +260,8 @@ ORDER BY sessions DESC  ;
 
 ### Result interpretation
 
+- Primary traffic concentrates on the homepage, products page, and Mr. Fuzzy page.
+- 
 ## Task - 7 - Top Entry Pages
 
 ### Email
@@ -289,8 +299,9 @@ ORDER BY total_visits DESC;
 | /home        | 10714        |
 
 
-### Result interpretation
+### Result Interpretation
 
+- Entire Traffic comes through the homepage as of now
 
 ## Task - 8 - Bounce Rate Analysis - June 14, 2012
  
@@ -330,6 +341,10 @@ FROM CTE;
 | 11048    | 6538             |0.5918
 
 ### Result interpretation
+
+- Current bounce rate stands at almost 60%, which is notably high, particularly for paid search.
+- Plan: Develop a custom landing page for search to enhance quality and engagement.
+- Future step: Collaborate on analyzing the test results once sufficient data is available to evaluate performance.
 
 ## Task - 9 Help Analyzing LP Test July 28, 2012*
 
@@ -408,6 +423,9 @@ GROUP BY pageview_url;
 
 ### Result interpretation
 
+- Positive outcome: Custom landing page shows a lower bounce rate, indicating success.
+- Plan: Collaborate with Tom to update campaigns, directing all nonbrand paid traffic to the new page.
+
 -------------------------------------------------------------------------------------------------
 ## Task - 10 - Landing Page Trend Analysis, August 31, 2012 */
 
@@ -470,6 +488,10 @@ GROUP BY YEARWEEK(created_at);
 | 26-08-2012    | 0.5396      | 0        | 833      |
 
 ### Result interpretation
+
+- Transition: Both pages received traffic initially, followed by a full switch to the custom landing page as planned.
+- Positive trend: Overall bounce rate has gradually decreased over time, indicating a positive outcome.
+
  
 ## Task - 11 - Help Analyzing Conversion Funnels, September 05, 2012
 
@@ -540,9 +562,11 @@ FROM cte    ;
 | 0.4707     | 0.7409       | 0.4359       | 0.6662   | 0.7934       | 0.4377      |
 
 
-### Result interpretation
 
+### Result Interpretation
 
+- Need to prioritize attention on the lander, Mr. Fuzzy page, and billing page due to their lower click rates.
+- 
 ## Task - 12 - Conversion Funnel Test Results - November 10, 2012
 
 ### Email
@@ -577,4 +601,6 @@ GROUP BY pageview_url;
 | /billing-2   | 654             | 410          | 0.6269 |
 | /billing     | 657             | 300          | 0.4566 |
 
-### Result interpretation
+### Result Interpretation
+
+- The new billings page have boosted CVR 
