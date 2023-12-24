@@ -55,7 +55,9 @@ GROUP BY
 | bsearch    | brand        | https://www.bsearch.com  | 7               |
 | NULL       | NULL         | https://www.bsearch.com  | 7               |
 
-### Gsearch is the primary source pf traffic
+### Result interpretation
+
+- Gsearch is the primary source of traffic
 
 ## Task - 2 - Gsearch CVR - April 14 2012
 
@@ -89,6 +91,12 @@ WHERE
 |----------|--------|--------|
 | 3895     | 112    | 0.0288 |
 
+### Result interpretation
+
+- Current conversion rate indicates a shortfall below the crucial 4% threshold.
+- To achieve optimal economic viability, a strategic adjustment is required.
+- Proposed action: Dial down search bids to align with the existing conversion rate.
+- Objective: Mitigate over-spending and ensure judicious resource allocation.
 
 ## Task - 3 - Gsearch Volume Trends - May 12, 2012
 
