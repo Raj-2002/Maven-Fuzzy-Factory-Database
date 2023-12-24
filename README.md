@@ -6,11 +6,21 @@ Maven Fuzzy Factory is an eCommerce retailer that specializes in SITUATION produ
 
 In your role as an eCommerce Database Analyst at Maven Fuzzy Factory, you are responsible for extracting and analyzing data from the company's database to understand and communicate the story of its growth over the last 35 Months of operation. The CEO is due to present company performance metrics to the board, and this is an opportunity to showcase the company's analytical capabilities. This report will help you effectively communicate the growth story to the board and highlight your role as the data expert for the company.
 
-## Midterm Project
 
 ### Project Overview
 
-Maven Fuzzy Factory has been operational for approximately eight months, and your CEO needs to present company performance metrics to the board in the upcoming week. As the eCommerce Database Analyst, your primary responsibility is to extract and analyze data from the company's database to quantify the company's growth during this period and effectively communicate this growth story to the board.
+#### 1. Ad Hoc Reports for the First 8 Months
+In the initial phase of our journey, spanning the first 8 months, we meticulously generated ad hoc reports to capture and analyze key performance indicators. These reports served as the foundation for our strategic decision-making process, providing insights that shaped our subsequent actions.
+
+#### 2. Board Meeting Demos: Showcasing Growth in the Last 8 Months
+Our commitment to excellence has fueled remarkable growth in the past 8 months. During the upcoming board meeting, we will present compelling demonstrations that highlight the key milestones achieved, illustrating the tangible progress made in various aspects of our operations.
+
+#### 3. 27 Months of Ad Hoc Reports: A Comprehensive Analysis
+Building upon the initial 8 months, our continuous efforts resulted in 27 months of comprehensive ad hoc reports. These reports delve into the intricacies of our performance, revealing trends, identifying opportunities, and providing a holistic view of our journey so far.
+
+#### 4. Investor Meet: Showcasing 35 Months of Progress
+The upcoming investor meet is a pivotal moment to showcase the cumulative progress made over the last 35 months.
+
 
 ### Data Analysis Goals
 
