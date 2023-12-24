@@ -342,10 +342,69 @@ FROM CTE;
 >Thanks, Morgan 
 
  ```
+SELECT website_pageview_id 
+FROM website_pageviews 
+WHERE pageview_url = '/lander-1' 
+LIMIT 1;
 
+CREATE TEMPORARY  TABLE no_of_pages
+SELECT 
+	MIN(DATE(wp.created_at)) AS start_of_week,
+	wp.website_session_id,
+    COUNT(wp.website_pageview_id) AS no_of_pages
+    FROM website_pageviews wp
+WHERE wp.created_at > '2012-06-19' AND wp.created_at < '2012-07-28'
+GROUP BY wp.website_session_id, YEARWEEK(wp.created_at);
+
+CREATE TEMPORARY TABLE landing_page_ids
+SELECT
+	wp.website_session_id AS sessions,
+    MIN(website_pageview_id) AS pageview_id,
+    wp.pageview_url AS pageview_url, 
+    o.order_id AS order_id
+FROM website_pageviews  wp
+JOIN website_sessions ws
+ON ws.website_session_id = wp.website_session_id
+LEFT JOIN orders o  
+ON o.website_session_id = wp.website_session_id 
+WHERE 
+	website_pageview_id >= 23504 
+    AND wp.created_at < '2012-07-28'
+    AND (pageview_url = '/home' OR pageview_url = '/lander-1')
+    AND ws.utm_source = 'gsearch'
+    AND ws.utm_campaign = 'nonbrand'
+GROUP BY wp.website_session_id,wp.pageview_url, o.order_id;
+
+WITH CTE5 AS
+(
+SELECT 
+	lpi.sessions AS sessions,
+    lpi.pageview_id AS pageview_id, 
+    lpi.pageview_url AS pageview_url,
+    lpi.order_id AS order_id,
+    nop.no_of_pages AS no_of_pages,
+    CASE WHEN nop.no_of_pages > 1 THEN NULL ELSE 1 END AS Bounced
+    
+from landing_page_ids lpi
+JOIN no_of_pages nop
+ON nop.website_session_id = lpi.sessions
+)
+SELECT 
+	pageview_url,
+    COUNT(sessions) AS total_sessions,
+    COUNT(Bounced) AS Bounced,
+    COUNT(Bounced)/COUNT(sessions) AS Bounce_rate
+FROM CTE5
+GROUP BY pageview_url;
 ```
 
 ### Results
+
+| pageview_url | total_sessions | Bounced | Bounce_rate |
+|--------------|----------------|---------|-------------|
+| /lander-1    | 2316           | 1233    | 0.5324      |
+| /home        | 2261           | 1319    | 0.5834      |
+
 
 ### Result interpretation
 
