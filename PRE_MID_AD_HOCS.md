@@ -55,6 +55,7 @@ GROUP BY
 | bsearch    | brand        | https://www.bsearch.com  | 7               |
 | NULL       | NULL         | https://www.bsearch.com  | 7               |
 
+### Gsearch is the primary source pf traffic
 
 ## Task - 2 - Gsearch CVR - April 14 2012
 
