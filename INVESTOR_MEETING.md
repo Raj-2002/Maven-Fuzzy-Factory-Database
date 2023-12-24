@@ -1,3 +1,8 @@
+## Investor Meeting Next Week
+
+> Now that we’ve been in market for 3 years, we’ve generated enough growth to raise a much larger round of venture one of the best West Coast firms.  capital funding. We’re close to securing a large round from I need your analytical skills to help me paint a picture of high growth, and data-driven performance optimization.
+
+
 ### TASK 1 
 
 First, I’d like to show our volume growth. Can you pull overall session and order volume, trended by quarter for the life of the business? Since the most recent quarter is incomplete, you can decide how to handle it.
