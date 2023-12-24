@@ -44,6 +44,10 @@ GROUP BY
 
 
 
+- Insight: Bsearch consistently receives approximately one-third of the traffic compared to Gsearch.
+- Recommendation: Prioritize a deeper understanding of the Bsearch channel given its significant impact on overall traffic.
+
+
 ## Comparing Our channels -  November 30, 2012
 
 ### Email
@@ -73,6 +77,9 @@ GROUP BY utm_source    ;
 |------------|--------|----------------|
 | gsearch    | 4921   | 20073          |
 | bsearch    | 562    | 6522           |
+
+- Observation: Desktop to mobile splits reveal notable differences in these channels from a device perspective.
+- Consideration: Keep this insight in mind for ongoing learning and optimization.
 
 
 ## Multi channel Bidding - December 15, 2012    
@@ -117,6 +124,9 @@ ORDER BY device_type ;
 | mobile      | gsearch    | 1015           | 13           | 0.0128 |
 
 
+- Confirmation: Channels exhibit non-identical performance, validating the need for differentiated bids.
+- Strategy: Optimize the overall paid marketing budget by bidding down on Bsearch due to its under-performance.
+
 ## Impact of Bid Changes - December 22, 2012 
  
 ### Email
@@ -158,6 +168,8 @@ GROUP BY YEARWEEK(created_at);
 | 09-12-2012    | 424    | 46     | 1277    | 293     | 0.1085            | 4.3584            |
 | 16-12-2012    | 376    | 41     | 1270    | 348     | 0.109             | 3.6494            |
 
+- Observation: Bsearch traffic experienced a decline post-bid down, with Gsearch also showing a decrease after Black Friday and Cyber Monday.
+- Interpretation: Acceptable given the low conversion rate, suggesting a strategic adjustment to align with performance metrics.
 
 ## Site traffic breakdown -  December 23, 2012 
 
@@ -221,6 +233,9 @@ GROUP BY
 | 2012 | 12 | 6643     | 464   | 0.0698                 | 482    | 0.0726                  | 492     | 0.0741                   |
 
 
+- Positive trend: Brand, direct, and organic volumes are not only growing but also increasing as a percentage of paid traffic volume.
+- Highlight: This narrative of sustained growth and shifting traffic composition is compelling and ideal for presentation to potential investors.
+
 ## Understanding Seasonality -  January 02, 2013 
 
 ### Email
@@ -262,8 +277,12 @@ GROUP BY Year, Month;
 | 2012 | 11    | 14011    | 618    |
 | 2012 | 12    | 10072    | 506    |
 
+- Yearly Growth: Steady growth observed throughout the year with significant spikes during the holiday months, notably around Black Friday and Cyber Monday.
+- Consideration: Keep this trend in mind for the next year when strategizing customer support and inventory management, particularly during peak periods.
+
 
 ## Data for Customer Service  January 05, 2013 
+
 ### Email
 
 >Good morning,
@@ -329,6 +348,10 @@ GROUP BY hour;
 | 23   | 8.8  | 8.6  | 9.6  | 10.6 | 7.6  | 5.3  | 8.3  |
 
 
+- Support Benchmark: Conversations with support companies suggest an optimal rate of ~10 sessions per hour per staffed employee.
+- Staffing Plan: Plan for one support staff member around the clock, with an increase to two staff members from 8 am to 5 pm, Monday through Friday.
+
+
 ## Sales Trends January 04, 2013
 
 ### Email
@@ -370,6 +393,10 @@ GROUP BY
 | 2012 | 11    | 618              | 30893.82      | 18849        |
 | 2012 | 12    | 506              | 25294.94      | 15433        |
 | 2013 | 1     | 42               | 2099.58       | 1281         |
+
+
+- Baseline Data: The established support plan will serve as valuable baseline data to track the evolution of revenue and margin with the rollout of the new product.
+- Positive Note: The observed growth pattern provides a promising outlook for the overall trajectory of the business.
 
     
 ## Impact of New Product Launch  April 05, 2013 
@@ -419,6 +446,10 @@ GROUP BY Year, Month ;
 | 2013 | 2     | 7168     | 497    | 0.0693    | 3.692108            | 335              | 162              |
 | 2013 | 3     | 6264     | 385    | 0.0615    | 3.176269            | 320              | 65               |
 | 2013 | 4     | 1209     | 96     | 0.0794    | 4.085227            | 82               | 14               |
+
+- Positive Confirmation: The data confirms a consistent improvement in conversion rates and revenue per session over time.
+- Challenge: Difficulty discerning whether the growth since January is attributed to the new product launch or a continuation of overall business improvements.
+
 
 
 ##  Help w/ User Pathing -  April 06, 2014 
@@ -479,6 +510,10 @@ GROUP BY time_period;
 |-------------------|----------|-----------|---------------|-------------|-----------------|-------------|-----------------|
 | Post_Product_2    | 10709    | 8200      | 0.7657        | 3781        | 0.3531          | 699         | 0.0653          |
 | Pre_Product_2     | 15696    | 11347     | 0.7229        | 6399        | 0.4077          | 0           | 0               |
+
+
+- Insight: The percentage of /products pageviews clicking to Mr. Fuzzy has decreased since the Love Bear launch.
+- Positive Outcome: Despite the decline in specific page clicks, the overall clickthrough rate has increased, indicating heightened interest in products as a whole.
 
 
 ##   Product Conversion Funnels  April 10, 2014 */
@@ -572,7 +607,9 @@ ORDER BY product_seen;
 | Lovebear     | 0.5485                 | 0.6876        | 0.8093              | 0.6168            |
 | Mrfuzzy      | 0.4349                 | 0.686         | 0.8205              | 0.6363            |
 
-
+- Discovery: Previous findings indicated that adding a second product enhanced overall CTR from the /products page.
+- Love Bear Performance: The Love Bear demonstrates a superior click rate to the /cart page and comparable rates throughout the funnel.
+- Consideration: The success of the second product prompts consideration for the potential addition of a third product to further enhance business performance.
 
 ##  Quality Issues & Refunds  October 15, 2014
 
@@ -643,6 +680,9 @@ GROUP BY
 | 2015 | 2     | 1113      | 0.035        | 644       | 0.0171       | 405       | 0.0494       | 544       | 0.0147       |
 | 2015 | 3     | 864       | 0.0324       | 223       | 0.0269       | 263       | 0.0722       | 343       | 0.0058       |
 
+- Refund Rates Analysis: Refund rates for Mr. Fuzzy decreased post the initial improvements in September 2013.
+- Historical Perspective: Acknowledgment of anticipated high refund rates in August and September (13-14%).
+- Supplier Performance: Indication that the new supplier has contributed to improved refund rates for Mr. Fuzzy, with other products also showing satisfactory performance.
 
 
 ## Repeat Visitors - November 1, 2014
@@ -684,6 +724,9 @@ SELECT repeatornot, count(user_id) AS tot from order_counts group by repeatornot
 | 3                | 5246  |
 
 
+- Insight: The breakdown reveals a notable portion of customers returning to the site after the initial session.
+- Significance: Recognizing the frequency of return visits underscores the potential for building customer loyalty and engagement over time.
+
 ##   Repeat Channel Mix November 5, 2014 
 
 ### Email
@@ -723,6 +766,12 @@ ORDER BY repeat_sessions DESC;
 | Paid Social       | 7652         | 0               |
 
 
+- Return Visit Channels: Repeat visits are primarily driven by organic search, direct type-ins, and paid brand.
+- Cost Analysis: About one-third of these return visits originate from paid channels, with brand clicks being more cost-effective than nonbrand.
+- Cost Efficiency: Overall, subsequent visits are economically advantageous, considering the relatively low cost associated with these channels.
+
+
+
 ## Top Website Pages  November 08, 2014 
  
 ### Email
@@ -753,4 +802,5 @@ GROUP BY is_repeat_session;
 | 0                   | 149787    | 0.068            | 4.343754             |
 | 1                   | 33577     | 0.0811           | 5.168828             |
 
-
+- Insight: Repeat sessions demonstrate a higher likelihood to convert and yield greater revenue per session.
+- Action Plan: Coordinate with Tom to factor in the value of repeat sessions when determining bidding strategies for paid traffic, considering their favorable conversion and revenue outcomes.
