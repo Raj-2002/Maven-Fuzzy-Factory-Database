@@ -8,6 +8,7 @@
 >Thanks, Tom
 
 ### MySQL Query
+
 ```
 SELECT 
 	MIN(DATE(created_at)) AS week_start_date,
@@ -35,6 +36,7 @@ GROUP BY
 
 
 ### MySQL Query    
+
 ```
 SELECT 
 	utm_source,
@@ -96,6 +98,7 @@ percent of gsearchfor each device, that would be great too.
 ```
 
 ### MySQL Query
+
 ```
 SELECT 
 	MIN(DATE(created_at)) AS start_of_week,
@@ -125,6 +128,7 @@ on paid traffic.  Could you pull organic search, direct type in, and paid brand 
 as a % of paid search nonbrand?
 -Cindy 
 */
+### MySQL Query
 
 ```
 WITH channel_group AS (
@@ -170,7 +174,9 @@ would be excellent.
 Thanks,
  -Cindy
  */
- 
+
+ ### MySQL Query
+
  ```
 SELECT
 YEAR(ws.created_at) AS Year,
@@ -192,6 +198,7 @@ Let’s avoid the holiday time period and use a date range of Sep 15 -Nov 15, 20
  
 Thanks, Cindy
  */
+### MySQL Query
 
 ```
 WITH daily_hourly_sessions AS (
@@ -227,6 +234,8 @@ Can you please pull monthly trends to date for number of sales, total revenue, a
 
 -Cindy 
 */
+### MySQL Query
+
 ```
 SELECT
 	YEAR(created_at) AS Year,
@@ -250,6 +259,8 @@ product, all for the time period since April 1, 2013.
 Thanks,
 -Cindy
  */
+ ### MySQL Query
+
 ```    
 SELECT
 	YEAR(ws.created_at) AS Year, 
@@ -277,6 +288,7 @@ since the new product launch on 2013-01-06, by product, and compare to the 3 mon
 
 Thanks, Morgan
   */
+### MySQL Query
 
 ```
 CREATE TEMPORARY TABLE products_pageviews
@@ -327,6 +339,8 @@ conversion.It would be great if you could produce a comparison between the two c
 
 Thanks! -Morgan  
  */
+ ### MySQL Query
+
 ``` 
 CREATE TEMPORARY TABLE product_seen
 SELECT
@@ -400,6 +414,8 @@ Our Mr. Fuzzy supplier had some quality issues which weren’t corrected until S
 major problem where the bears’ arms were falling off in Aug/Sep 2014. As a result, we replaced them with a new 
 supplier on September 16, 2014. Can you please pull monthly product refund rates, by product, and confirm our quality issues are now fixed?
 -Cindy */
+### MySQL Query
+
 ```
 SELECT
     YEAR(oi.created_at) AS Year,
@@ -433,6 +449,8 @@ have repeat sessions, they may be more valuable than we thought. If that’s the
 more to acquire them. Could you please pull data on how many of our website visitors come back for another session? 2014 to date is good. 
 Thanks, Tom
 */
+### MySQL Query
+
 ```
 WITH order_counts AS (
 SELECT 
@@ -461,6 +479,8 @@ Comparing new vs. repeat sessions by channel would be really valuable, if you’
 Thanks, Tom
 
 */
+### MySQL Query
+
 ```
 SELECT
   CASE
@@ -486,6 +506,8 @@ Sounds like you and Tom have learned a lot about our repeat customers. Can I tro
 I’d love to do a comparison of conversion rates and revenue per session for repeat sessions vs new sessions. 
 Let’s continue using data from 2014, year to date. Thank you!
  -Morgan*/
+ 
+### MySQL Query
 
  ```
 SELECT
