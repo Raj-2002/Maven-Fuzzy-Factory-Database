@@ -133,6 +133,7 @@ GROUP BY YEARWEEK(created_at)   ;
 | 29-04-2012    | 681      |
 | 06-05-2012    | 651      |
 
+### Result interpretation
 
 
 ## Task - 4 - Gsearch device level performance - May 11, 2012
@@ -170,6 +171,7 @@ SELECT
 | mobile      | 2492     | 24     | 0.0096 |
 | desktop     | 3911     | 146    | 0.0373 |
 
+### Result interpretation
 
 ## Task - 5 - Gsearch device-level trends - June 9, 2012
  
@@ -211,6 +213,7 @@ GROUP BY start_of_week;
 | 04-06-2012    | 157              | 582              |
 
 
+### Result interpretation
 
 
 ## Task - 6 - Top Website Pages - June 09, 2012
@@ -247,7 +250,7 @@ ORDER BY sessions DESC  ;
 | /billing                     | 716      |
 | /thank-you-for-your-order    | 306      |
 
-
+### Result interpretation
 
 ## Task - 7 - Top Entry Pages
 
@@ -286,7 +289,7 @@ ORDER BY total_visits DESC;
 | /home        | 10714        |
 
 
-
+### Result interpretation
 
 
 ## Task - 8 - Bounce Rate Analysis - June 14, 2012
@@ -326,7 +329,7 @@ FROM CTE;
 |----------|------------------|-------------|
 | 11048    | 6538             |0.5918
 
-
+### Result interpretation
 
 ## Task - 9 Help Analyzing LP Test July 28, 2012*
 
@@ -344,7 +347,7 @@ FROM CTE;
 
 ### Results
 
-
+### Result interpretation
 
 -------------------------------------------------------------------------------------------------
 ## Task - 10 - Landing Page Trend Analysis, August 31, 2012 */
@@ -407,7 +410,7 @@ GROUP BY YEARWEEK(created_at);
 | 19-08-2012    | 0.5015      | 0        | 1012     |
 | 26-08-2012    | 0.5396      | 0        | 833      |
 
-
+### Result interpretation
  
 ## Task - 11 - Help Analyzing Conversion Funnels, September 05, 2012
 
@@ -478,6 +481,7 @@ FROM cte    ;
 | 0.4707     | 0.7409       | 0.4359       | 0.6662   | 0.7934       | 0.4377      |
 
 
+### Result interpretation
 
 
 ## Task - 12 - Conversion Funnel Test Results - November 10, 2012
@@ -514,4 +518,4 @@ GROUP BY pageview_url;
 | /billing-2   | 654             | 410          | 0.6269 |
 | /billing     | 657             | 300          | 0.4566 |
 
-
+### Result interpretation
