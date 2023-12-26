@@ -33,14 +33,14 @@ performance, and use data to understand the impact of new product launches.
 #### MySQL Query
 ```
 SELECT 
-	utm_source,
+    utm_source,
     utm_campaign,
     http_referer,
     COUNT(website_session_id) AS total_sessions
 FROM website_sessions
 WHERE created_at < '2012-04-12'
 GROUP BY
-	utm_source,
+    utm_source,
     utm_campaign,
     http_referer ;
 ```
@@ -73,14 +73,14 @@ GROUP BY
 
 ```
 SELECT 
-	COUNT(ws.website_session_id) AS sessions,
+    COUNT(ws.website_session_id) AS sessions,
     COUNT(o.website_session_id) AS orders,
-	COUNT(o.website_session_id)/COUNT(ws.website_session_id) AS CVR
+    COUNT(o.website_session_id)/COUNT(ws.website_session_id) AS CVR
 FROM website_sessions ws
 LEFT JOIN orders o
 ON o.website_session_id = ws.website_session_id
 WHERE 
-	ws.utm_source = 'gsearch'
+    ws.utm_source = 'gsearch'
     AND ws.utm_campaign = 'nonbrand'
     AND ws.created_at < '2012-04-14';
 ```
@@ -114,7 +114,7 @@ SELECT
 	COUNT(website_session_id) AS Sessions
 FROM website_sessions ws
 WHERE 
-	utm_campaign = 'nonbrand'
+    utm_campaign = 'nonbrand'
     AND utm_source = 'gsearch'
     AND created_at < '2012-05-12'
 GROUP BY YEARWEEK(created_at)   ;
@@ -165,7 +165,7 @@ SELECT
     AND ws.utm_source = 'gsearch'
     AND ws.created_at < '2012-05-11'
  GROUP BY
- ws.device_type;
+    ws.device_type;
 ```
 
 ### Final Result
@@ -193,12 +193,12 @@ SELECT
 
 ```
  SELECT 
-	DATE(DATE_SUB(created_at , INTERVAL (DAYOFWEEK(created_at) -2) DAY)) AS start_of_week,
+    DATE(DATE_SUB(created_at , INTERVAL (DAYOFWEEK(created_at) -2) DAY)) AS start_of_week,
     COUNT(CASE WHEN ws.device_type = 'mobile' THEN ws.website_session_id ELSE NULL END) AS mobile_sessions,
-	COUNT(CASE WHEN ws.device_type = 'desktop' THEN ws.website_session_id ELSE NULL END) AS desktop_sessions
+    COUNT(CASE WHEN ws.device_type = 'desktop' THEN ws.website_session_id ELSE NULL END) AS desktop_sessions
 FROM website_sessions ws
 WHERE
-	ws.utm_campaign = 'nonbrand'
+    ws.utm_campaign = 'nonbrand'
     AND ws.utm_source = 'gsearch'
     AND ws.created_at < '2012-06-09'  
     AND ws.created_at > '2012-04-15'
@@ -238,8 +238,8 @@ GROUP BY start_of_week;
 
 ```
 SELECT 
-	pageview_url,
-    COUNT(DISTINCT website_pageview_id) AS sessions
+   pageview_url,
+   COUNT(DISTINCT website_pageview_id) AS sessions
 FROM website_pageviews wp
 WHERE created_at < '2012-06-09'
 GROUP BY pageview_url
@@ -277,7 +277,8 @@ ORDER BY sessions DESC  ;
 ```
 CREATE TEMPORARY TABLE tp1
 SELECT
-    website_session_id, MIN(website_pageview_id) AS min_pageview_id
+    website_session_id,
+    MIN(website_pageview_id) AS min_pageview_id
 FROM website_pageviews
 WHERE created_at < '2012-06-12'
 GROUP BY
