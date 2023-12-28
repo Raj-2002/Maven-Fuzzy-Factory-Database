@@ -38,6 +38,8 @@ Report Link : https://github.com/Raj-2002/Maven-Fuzzy-Factory-Database/blob/main
 
 ## Data Information
 
+Data Source - https://www.kaggle.com/datasets/rubenman/maven-fuzzy-factory-dataset
+
 The Maven Fuzzy Factory database consists of six tables, each serving a specific purpose. These tables are as follows:
 
 1. **website_sessions**
