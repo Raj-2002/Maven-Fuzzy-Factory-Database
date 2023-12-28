@@ -24,8 +24,8 @@ Building upon the initial 8 months, our continuous efforts resulted in 27 months
 
 Report Link: https://github.com/Raj-2002/Maven-Fuzzy-Factory-Database/blob/main/3.%20POST_MID_AD_HOCS.md     
 
-#### 4. Investor Meet: Showcasing 35 Months of Progress
-The upcoming investor meet is a pivotal moment to showcase the cumulative progress made over the last 35 months.
+#### 4. Investor Meet: Showcasing 36 Months of Progress
+The upcoming investor meet is a pivotal moment to showcase the cumulative progress made over the last 36 months.
 
 Report Link : https://github.com/Raj-2002/Maven-Fuzzy-Factory-Database/blob/main/4.%20INVESTOR_MEETING.md    
 
