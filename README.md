@@ -12,15 +12,22 @@ In your role as an eCommerce Database Analyst at Maven Fuzzy Factory, you are re
 #### 1. Ad Hoc Reports for the First 8 Months
 In the initial phase of our journey, spanning the first 8 months, we meticulously generated ad hoc reports to capture and analyze key performance indicators. These reports served as the foundation for our strategic decision-making process, providing insights that shaped our subsequent actions.
 
+Report Link : https://github.com/Raj-2002/Maven-Fuzzy-Factory-Database/blob/main/1.%20PRE_MID_AD_HOCS.md     
+
 #### 2. Board Meeting Demos: Showcasing Growth in the Last 8 Months
 Our commitment to excellence has fueled remarkable growth in the past 8 months. During the upcoming board meeting, we will present compelling demonstrations that highlight the key milestones achieved, illustrating the tangible progress made in various aspects of our operations.
+
+Report Link: https://github.com/Raj-2002/Maven-Fuzzy-Factory-Database/blob/main/2.%20BOARD_MEETING.md     
 
 #### 3. 27 Months of Ad Hoc Reports: A Comprehensive Analysis
 Building upon the initial 8 months, our continuous efforts resulted in 27 months of comprehensive ad hoc reports. These reports delve into the intricacies of our performance, revealing trends, identifying opportunities, and providing a holistic view of our journey so far.
 
+Report Link: https://github.com/Raj-2002/Maven-Fuzzy-Factory-Database/blob/main/3.%20POST_MID_AD_HOCS.md     
+
 #### 4. Investor Meet: Showcasing 35 Months of Progress
 The upcoming investor meet is a pivotal moment to showcase the cumulative progress made over the last 35 months.
 
+Report Link : https://github.com/Raj-2002/Maven-Fuzzy-Factory-Database/blob/main/4.%20INVESTOR_MEETING.md    
 
 ### Data Analysis Goals
 
